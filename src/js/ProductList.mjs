@@ -34,6 +34,8 @@ export default class ProductListing {
   // render after doing the first stretch
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
+  }
+}
 
   /*  
   async init() {
