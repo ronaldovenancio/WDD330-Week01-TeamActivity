@@ -6,6 +6,10 @@ function convertToJson(res) {
   }
 }
 
+export async function findProductById(id) {
+  const products = await this.getData();
+  return products.find((item) => item.Id === id);
+} 
 
 export default class ProductData {
   constructor(category) {
