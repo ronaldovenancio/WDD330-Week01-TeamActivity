@@ -1,5 +1,5 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
-import { findProductById } from "./ProductData.mjs";
+import { findProductById } from "./productData.mjs";
 
   //const dataSource = new ProductData("tents");
   
