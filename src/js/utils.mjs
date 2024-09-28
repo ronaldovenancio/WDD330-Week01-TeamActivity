@@ -15,6 +15,11 @@ export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
+
+export function setContent(selector, content) {
+  qs(selector).innerHTML = content;
+}
+
 // helper to get parameter strings
 export function getParam(param) {
   const queryString = window.location.search;
