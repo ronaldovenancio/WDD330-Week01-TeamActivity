@@ -1,5 +1,3 @@
-// ProductList.mjs
-
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
@@ -17,26 +15,42 @@ function productCardTemplate(product) {
 
 export default class ProductListing {
   constructor(category, dataSource, listElement) {
-    // We passed in this information to make our class as reusable as possible.
-    // Being able to define these things when we use the class will make it very flexible
-      this.category = category;
-      this.dataSource = dataSource;
-      this.listElement = listElement;
+    this.products = [];
+    this.category = category;
+    this.dataSource = dataSource;
+    this.listElement = listElement;
   }
 
-
-  async init() {
-    // our dataSource will return a Promise...so we can use await to resolve it.
-    const list = await this.dataSource.getData();
-    // render the list
-    this.renderList(list);
+  // Stretch Activity Week 2 #2
+  // Filter the products that are available
+  filterProducts(list) {
+    return list.filter((product) => product.Available === true);
   }
-  // render after doing the first stretch
+
+  // Before Stretch Activity Week 2
+  // Render the product listing
+  // renderList(list) {
+  //   const info = list.map((product) => productCardTemplate(product)).join("");
+  //   this.listElement.innerHTML = info;
+  // }
+
+  // After Stretch Activity Week 2
+  // Render the product listing
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
-}
 
+  // Initialize the product listing and fetch the data
+  async init() {
+    const list = await this.dataSource.getData();
+    // console.log(list);
+    // Filter the list
+    const filteredList = this.filterProducts(list);
+    // console.log(filteredList);
+    // Render the filtered list
+    this.renderList(filteredList);
+  }
+}
   /*  
   async init() {
       try {
