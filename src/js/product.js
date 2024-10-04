@@ -1,8 +1,28 @@
-import { getParams, loadHeaderFooter } from "./utils.mjs";
+import { getParams, loadHeaderFooter, setLocalStorage, getLocalStorage } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
+import { findProductById } from "./ProductData.mjs";
 
 loadHeaderFooter();
+
+function addProductToCart(product) {
+  // TODO product should be an array
+  const currentCart = getLocalStorage("so-cart") || [];
+  currentCart.push(product);
+  setLocalStorage("so-cart", currentCart);
+}
+
+// add to cart button event handler
+async function addToCartHandler(e) {  
+  const product = await findProductById(e.target.dataset.id);
+  addProductToCart(product);
+}
+
+// add listener to Add to Cart button
+document
+  .getElementById("addToCart")
+  .addEventListener("click", addToCartHandler);
+
 
 const dataSource = new ProductData("tents");
 const productId = getParams("product");
