@@ -22,24 +22,18 @@ function productCardTemplate(product) {
 
 export default class ProductListing {
   constructor(category, dataSource, listElement) {
-    //this.products = [];
+    this.products = [];
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
   }
 
-  // Initialize the product listing and fetch the data
-  async init() {
-    const list = await this.dataSource.getData(this.category);
-    this.renderList(list);
-    document.querySelector(".title").innerHTML = this.category;
-  }
-
   // Stretch Activity Week 2 #2
   // Filter the products that are available
-  //filterProducts(list) {
-    //return list.filter((product) => product.Available === true);
-  //}
+  filterProducts(list) {
+    return list.filter((product) => product.Available === true);
+  }
+
 
   // Before Stretch Activity Week 2
   // Render the product listing
@@ -48,15 +42,68 @@ export default class ProductListing {
   //   this.listElement.innerHTML = info;
   // }
 
+
+
+  // Sort the products/list by price or name
+  sortList(list, criteria) {
+    if (criteria === "name") {
+      return list.sort((a, b) => a.Name.localeCompare(b.Name));
+    } else if (criteria === "price") {
+      return list.sort((a, b) => a.FinalPrice - b.FinalPrice);
+    }
+    return list;
+  }
+
   // After Stretch Activity Week 2
   // Render the product listing
+
+  renderList(list) {
+    this.listElement.innerHTML = ""; // Clear the current list before rendering
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
+  }
+  /*
   renderList(list) {
     if (list.length > 4) {
         list.length = 4
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
-  }
+  }  */
 
+
+// Initialize the product listing and fetch the data
+async init() {
+  const list = await this.dataSource.getData(this.category);
+  // render the list
+  this.renderList(list);
+
+  // Sort the products/list by price or name
+  const sortElement = document.getElementById("sort");
+  sortElement.addEventListener("change", (event) => {
+    const sortedList = this.sortList(list, event.target.value);
+    this.renderList(sortedList);
+  });
+
+  //set the title to the current category
+  // Capitalize the first letter of the category
+  const title =
+    this.category.charAt(0).toUpperCase() + this.category.slice(1);
+  document.querySelector(".title").innerHTML = title;
+}
+}
+
+ /*
+  // Initialize the product listing and fetch the data
+  async init() {
+    const list = await this.dataSource.getData(this.category);
+    this.renderList(list);
+    document.querySelector(".title").innerHTML = this.category;
+  }
+*/
+  
+
+  
+
+  
   /*
   // Initialize the product listing and fetch the data
   async init() {
