@@ -95,7 +95,7 @@ function cartSuperscript(items) {
 
   //check if cartCountElement exists
   if (!cartCountElement) {
-    console.error("No element with class 'cart-superscript' found.");
+    //console.error("No element with class 'cart-superscript' found.");
     return;
   }
   const cartCount = items.length;
