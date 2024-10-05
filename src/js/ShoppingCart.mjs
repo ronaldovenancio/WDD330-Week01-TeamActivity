@@ -50,11 +50,6 @@ function addQuantity(targetElement) {
 
     setLocalStorage("cart", cart);
     totalCart();
-
-
-
-
-
 }
 
 function minusQuantity(targetElement) {

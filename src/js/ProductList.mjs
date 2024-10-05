@@ -37,9 +37,9 @@ export default class ProductListing {
 
   // Stretch Activity Week 2 #2
   // Filter the products that are available
-  filterProducts(list) {
-    return list.filter((product) => product.Available === true);
-  }
+  //filterProducts(list) {
+    //return list.filter((product) => product.Available === true);
+  //}
 
   // Before Stretch Activity Week 2
   // Render the product listing

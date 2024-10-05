@@ -43,7 +43,7 @@ export function getParams(param) {
 
 // function to take a list of objects and a template and insert the objects as HTML into the DOM
 // This part is an anctivity week 2
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin",clear = false,) {
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false,) {
   const htmlStrings = list.map(templateFn);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
@@ -52,9 +52,9 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function renderWithTemplate(templateFn, parentElement, data, callback) {
+export function renderWithTemplate(template, parentElement, data, callback) {
   //console.log(templateFn);
-  parentElement.insertAdjacentHTML("afterbegin", templateFn);
+  parentElement.insertAdjacentHTML("afterbegin", template);
   if (callback) {
     callback(data);
   }
