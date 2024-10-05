@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, updateCartCount } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -25,17 +25,48 @@ export default class ProductDetails {
     this.product = {};
   }
 
+
   async init() {
-    const product = await this.dataSource.findProductById(this.productId);
+    // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
+    this.product = await this.dataSource.findProductById(this.productId);
+    this.renderProductDetails("main")
+    // once the HTML is rendered we can add a listener to Add to Cart button
+    // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
+    document
+        .getElementById("addToCart")
+        .addEventListener("click", this.addToCart.bind(this));
+}
+
+
+
+  /*
+  async init() {
+    this.product = await this.dataSource.findProductById(this.productId);
     console.log(product);
-    this.renderProductDetails(product);
+    //this.renderProductDetails(product);
+    this.renderProductDetails("main");
 
     document
       .getElementById("addToCart")
       .addEventListener("click", () => this.addToCart(product));
   }
+  */
 
 
+
+  addToCart() {
+    const item = this.product;
+    item["quantity"] = 1;
+    const shoppingCart = getLocalStorage("cart");
+    shoppingCart.push(item);
+
+    setLocalStorage("cart", shoppingCart);
+    updateCartCount();
+  }
+
+
+
+  /*
   addToCart() {
     let cartContents = getLocalStorage("so-cart");
     //check to see if there was anything there
@@ -46,6 +77,15 @@ export default class ProductDetails {
     cartContents.push(this.product);
     setLocalStorage("so-cart", cartContents);
   }
+    */
+
+
+  renderProductDetails(selector) {
+        const element = document.querySelector(selector);
+        element.insertAdjacentHTML(
+            "afterBegin", productDetailsTemplate(this.product)
+        );
+    }
 
 
   /* 
@@ -64,9 +104,11 @@ export default class ProductDetails {
 
     setLocalStorage("so-cart", productList);
   }
-  */
+  
+
 
   // Added suggested retail price and list price on line 36-39
+  
   renderProductDetails(product) {
     const detailsElement = document.querySelector(".product-detail");
     detailsElement.innerHTML = `
@@ -93,7 +135,7 @@ export default class ProductDetails {
     `;
   }
 }
-
+*/
 
 
 /*
@@ -146,5 +188,6 @@ export default class ProductDetails {
       productDetailsTemplate(this.product)
     );
   }
+  */
 }
-*/
+

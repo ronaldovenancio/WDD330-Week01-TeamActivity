@@ -7,6 +7,9 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
+  if (!localStorage.getItem("cart")) {
+    localStorage.setItem("cart", "[]");
+  }
   return JSON.parse(localStorage.getItem(key));
 }
 
@@ -40,12 +43,7 @@ export function getParams(param) {
 
 // function to take a list of objects and a template and insert the objects as HTML into the DOM
 // This part is an anctivity week 2
-export function renderListWithTemplate(
-  templateFn,
-  parentElement,
-  list,
-  position = "afterbegin",
-  clear = false,) {
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin",clear = false,) {
   const htmlStrings = list.map(templateFn);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
@@ -54,11 +52,7 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function renderWithTemplate(
-  templateFn,
-  parentElement,
-  data,
-  callback) {
+export function renderWithTemplate(templateFn, parentElement, data, callback) {
   //console.log(templateFn);
   parentElement.insertAdjacentHTML("afterbegin", templateFn);
   if (callback) {
@@ -66,21 +60,25 @@ export function renderWithTemplate(
   }
 }
 
-async function loadTemplate(path) {
-  const res = await fetch(path);
-  const template = await res.text();
+export async function loadTemplate(path) {
+  const html = await fetch(path);
+  const template = await html.text();
   return template;
-  //onst html = await fetch(path).then((res) => res.text());
-  //console.log(html);
-  //return html;
 }
 
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("./partials/header.html");
-  const footerTemplate = await loadTemplate("./partials/footer.html");
-  const header = document.querySelector("#header");
-  const footer = document.querySelector("#footer");
-  renderWithTemplate(headerTemplate, header);
-  renderWithTemplate(footerTemplate, footer);
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+  updateCartCount();
+}
+
+export function updateCartCount() {
+  const cartItems = getLocalStorage("cart");
+  const cartCountElement = document.querySelector(".card-count");
+  cartCountElement.textContent = cartItems.length;
 }

@@ -1,3 +1,13 @@
+import ShoppingCart from "./ShoppingCart.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
+
+const cart = new ShoppingCart("cart", ".product-list");
+cart.displaycart();
+
+
+/*
 import {
   getLocalStorage,
   setLocalStorage,
@@ -22,7 +32,7 @@ function renderCartContents() {
     cartSubtotal(cartItems);
     return  cartItems;
   }  
-  */
+  
 
   // Set the total price of the cart
   //cartSubtotal(cartItems);
@@ -112,3 +122,4 @@ function cartSuperscript() {
     cartCountElement.textContent = cartCount;
   }
 }
+*/
