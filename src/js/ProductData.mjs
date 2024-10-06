@@ -25,7 +25,9 @@ export default class ProductData  {
   }
   getData() {    
     return fetch(this.path)
-      .then(convertToJson).then((data) => data);
+      //.then(convertToJson).then((data) => data);
+      .then(convertToJson)
+      .then((data) => data.filter((item) => item.Id != '989CG' && item.Id != '880RT'));
   }
   async findProductById(id) {
     const products = await this.getData()
