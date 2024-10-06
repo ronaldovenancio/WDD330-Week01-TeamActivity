@@ -1,5 +1,5 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./ProductData.mjs";
 import { qs, setContent } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
