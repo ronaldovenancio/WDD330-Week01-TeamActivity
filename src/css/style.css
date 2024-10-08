@@ -110,6 +110,11 @@ button {
   fill: gray;
 }
 
+.qty-input {
+  display: inline-flex;
+  width: 1fr;
+}
+
 /* End cart icon styles */
 
 .mission {
@@ -129,10 +134,22 @@ button {
   list-style-type: none;
   padding: 0;
 }
+
+.product-grid {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  color: var(--dark-grey);
+  padding-left: 0;
+}
+
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
