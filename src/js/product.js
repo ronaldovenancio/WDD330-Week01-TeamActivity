@@ -14,9 +14,9 @@ product.init();
 
 
 
-
 /*
-
+import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { findProductById } from "./ProductData.mjs";
 
 import { getParams, loadHeaderFooter, setLocalStorage, getLocalStorage } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";

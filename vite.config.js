@@ -21,7 +21,7 @@ export default defineConfig({
 
 /*
 I did this change in week02 
-It was changeg by the new build above
+It was changed by the new build above
   build: {
     outDir: "../dist",
     rollupOptions: {
