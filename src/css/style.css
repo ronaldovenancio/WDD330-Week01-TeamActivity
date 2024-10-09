@@ -110,11 +110,6 @@ button {
   fill: gray;
 }
 
-.qty-input {
-  display: inline-flex;
-  width: 1fr;
-}
-
 /* End cart icon styles */
 
 .mission {
@@ -134,22 +129,10 @@ button {
   list-style-type: none;
   padding: 0;
 }
-
-.product-grid {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-  color: var(--dark-grey);
-  padding-left: 0;
-}
-
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
 }
-
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
@@ -217,6 +200,17 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.grid-item {
+  width: 150px;  
+  text-align: center;
 }
 
 @media screen and (min-width: 500px) {

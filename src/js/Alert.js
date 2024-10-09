@@ -11,7 +11,7 @@ export default class Alert {
       const result = await response.json();
       return result;
     } catch (error) {
-     // console.error("Alert request error: ", error);
+      console.error("Alert request error: ", error);
       return false;
     }
   }

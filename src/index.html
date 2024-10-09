@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-    <link rel="icon" type="image/png" href="/images/favicon.png" />
-    <title>Sleep Outside | Home</title>
+    <title>Sleep Outside | Home mx</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script type="module" src="/js/main.js"></script>
+    <script src="/js/main.js" type="module"></script>
+    <script src="/js/product-listings.js" type="module"></script>
   </head>
   <body>
-    <header class="divider" id="main-header"></header>
+    <header class="divider" id="main-header">      
+    </header>
     <main class="divider">
       <div class="hero">
         <img
@@ -32,11 +32,39 @@
           comfortably at an affordable price.
         </p>
       </section>
+      <section>
+        <div class="grid-container">
+          <div class="grid-item">
+            <a href="/product-listing/index.html?category=tents">
+              <img src="/public/images/categories/noun_Tent_3544767.svg" alt="Tent Icon from Noun Project: Mustofa Bayu" />
+            </a>
+            <h2>Tents</h2>
+          </div>
+          <div class="grid-item">
+            <a href="/product-listing/index.html?category=backpacks">
+              <img src="/public/images/categories/noun_carrier bag_3544771.svg" alt="Backpack Icon from Noun Project: Mustofa Bayu" />
+            </a>
+            <h2>Backpacks</h2>
+          </div>
+          <div class="grid-item">
+            <a href="/product-listing/index.html?category=sleeping-bags">
+              <img src="/public/images/categories/noun_Sleeping Bag_3544775.svg" alt="Hammock Icon from Noun Project: Paul Richard" />            
+            </a>
+            <h2>Sleeping bags</h2>            
+          </div>
+          <div class="grid-item">
+            <a href="/product-listing/index.html?category=hammocks">
+              <img src="/public/images/categories/noun_Hammock_791143.svg" alt="Sleeping Bag Icon from Noun Project: Mustofa Bayu" />            
+            </a>
+            <h2>Hammocks</h2>
+          </div>
+        </div>
+      </section>
       <section class="products">
         <h2>Top Products</h2>
         <ul class="product-list">
         </ul>
-      </section>
+      </section>      
     </main>
     <footer id="main-footer"></footer>
   </body>
