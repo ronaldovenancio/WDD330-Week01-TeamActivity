@@ -15,14 +15,15 @@ export default class ExternalServices {
   }
 
   async getData(category) {
-    const Response = await fetch(baseURL + `products/search/${category}`);
-    const data = await convertToJson(Response);
+    const response = await fetch(`${baseURL}products/search/${category}`);
+    const data = await convertToJson(response);
+    // console.log(data.Result);
     return data.Result;
   }
 
   async findProductById(id) {
-    const Response = await fetch(`${baseURL}product/${id}`);
-    const data = await convertToJson(Response);
+    const response = await fetch(`${baseURL}product/${id}`);
+    const data = await convertToJson(response);
     return data.Result;
   }
 
