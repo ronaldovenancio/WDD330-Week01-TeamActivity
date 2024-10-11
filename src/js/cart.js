@@ -1,13 +1,14 @@
-import {
-  getLocalStorage,
-  setLocalStorage,
-  loadHeaderFooter,
-} from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import ShoppingCart from "./ShoppingCart.mjs";
 
 loadHeaderFooter();
 
-const cartItems = getLocalStorage("so-cart") || [];
+//const cartItems = getLocalStorage("so-cart") || [];
 
+const shoppingCart = new ShoppingCart();
+shoppingCart.renderCartContents();
+
+/*
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
@@ -107,7 +108,7 @@ function cartSuperscript(items) {
     cartCountElement.textContent = cartCount;
   }
 }
-
+*/
 
 
 

@@ -1,24 +1,30 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-  // Added visual discount if any
-    const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
-    let discountAmount = 0;
-
-    if (isDiscounted) {
-        discountAmount = ((product.SuggestedRetailPrice - product.FinalPrice) / product.SuggestedRetailPrice * 100).toFixed(0);
-    }
-  return `<li class="product-card">
-  <a href="product_pages/index.html?product=${product.Id}">
-  <img
-    src="${product.Image}"
-    alt="Image of ${product.Name}"
-  />
-  <h3 class="card__brand">${product.Brand.Name}</h3>
-  <h2 class="card__name">${product.Name}</h2>
-  <p class="product-card__price">$${product.FinalPrice}</p></a>
-</li>`
+  return `
+    <li class="product-card">
+      <a href="/product_pages/?product=${product.Id}">
+        <img
+          src="${product.Images.PrimaryMedium}"
+          alt="${product.Name}"
+        />
+        <h3 class="card__brand">${product.Brand.Name}</h3>
+        <h2 class="card__name">${product.Name}</h2>
+        <p class="product-card__price">
+          <span class="product-card__original-price">$${product.SuggestedRetailPrice.toFixed(2)}</span>
+          <span class="product-card__discount-price">$${product.ListPrice}</span>
+        </p>
+        </a>
+    </li>`;
 }
+
+function errorTemplate() {
+  return `
+    <div class="product-error">
+      <p>Sorry we could not find that product for you!  Please select again.</p>
+    </div>`;
+}
+
 
 export default class ProductListing {
   constructor(category, dataSource, listElement) {
@@ -33,15 +39,6 @@ export default class ProductListing {
   filterProducts(list) {
     return list.filter((product) => product.Available === true);
   }
-
-
-  // Before Stretch Activity Week 2
-  // Render the product listing
-  // renderList(list) {
-  //   const info = list.map((product) => productCardTemplate(product)).join("");
-  //   this.listElement.innerHTML = info;
-  // }
-
 
 
   // Sort the products/list by price or name
@@ -59,7 +56,22 @@ export default class ProductListing {
 
   renderList(list) {
     this.listElement.innerHTML = ""; // Clear the current list before rendering
+    if (list.length === 0) {
+      renderListWithTemplate(
+        errorTemplate,
+        this.listElement,
+        list,
+        "afterend",
+        false,
+      );
+    }
     renderListWithTemplate(productCardTemplate, this.listElement, list);
+  }
+
+  handleBrandCrumbs() {
+    const breadcrumbsElement = document.querySelector("#breadcrumbs");
+    breadcrumbsElement.innerHTML = `<span class="path">${this.category}</span> <span class="arrow">></span><span class="path">(${this.products.length} items)</span>`
+
   }
   /*
   renderList(list) {
