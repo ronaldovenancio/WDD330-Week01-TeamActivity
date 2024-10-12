@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, cartSuperscript, updateCartCount } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, cartSuperscript } from "./utils.mjs";
 
 function cartItemTemplate(item) {
     return `
