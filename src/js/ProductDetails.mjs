@@ -31,6 +31,7 @@ export default class ProductDetails {
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     const product = await this.dataSource.findProductById(this.productId);
+    this.product = product;
     this.renderProductDetails(product);
     this.handleBrandCrumbs();
     // once the HTML is rendered we can add a listener to Add to Cart button
