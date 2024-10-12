@@ -10,7 +10,6 @@ export default class Modal {
   ShowModal() {
     const shouldShowModal = getLocalStorage("modal-register");
     if(shouldShowModal) return false;
-
     this.handleModal();
     setLocalStorage("modal-register", true);
   }

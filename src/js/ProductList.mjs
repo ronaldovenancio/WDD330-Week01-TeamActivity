@@ -1,4 +1,6 @@
 import { renderListWithTemplate } from "./utils.mjs";
+import ProductModal from "./ProductModal.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
 function productCardTemplate(product) {
   return `
@@ -15,6 +17,7 @@ function productCardTemplate(product) {
           <span class="product-card__discount-price">$${product.ListPrice}</span>
         </p>
         </a>
+        <button id="quickViewBtn" class="button--small" data-id="${product.Id}">Quick View</button>
     </li>`;
 }
 
@@ -71,7 +74,6 @@ export default class ProductListing {
   handleBrandCrumbs() {
     const breadcrumbsElement = document.querySelector("#breadcrumbs");
     breadcrumbsElement.innerHTML = `<span class="path">${this.category}</span> <span class="arrow">></span><span class="path">(${this.products.length} items)</span>`
-
   }
   /*
   renderList(list) {
@@ -85,6 +87,7 @@ export default class ProductListing {
 // Initialize the product listing and fetch the data
 async init() {
   const list = await this.dataSource.getData(this.category);
+  this.products = list;
   // render the list
   this.renderList(list);
 
@@ -100,5 +103,21 @@ async init() {
   const title =
     this.category.charAt(0).toUpperCase() + this.category.slice(1);
   document.querySelector(".title").innerHTML = title;
+  this.handleBrandCrumbs();
+
+  // event listener to trigger the modal
+  document.addEventListener("click", function (e) {
+    if (e.target && e.target.matches("#quickViewBtn")) {
+      const productId = e.target.getAttribute("data-id");
+      console.log(productId);
+
+      // Create an instance of ExternalServices
+      const dataSource = new ExternalServices();
+
+      const modal = new ProductModal(productId, dataSource);
+      modal.init();
+    }
+  });
+
 }
 }

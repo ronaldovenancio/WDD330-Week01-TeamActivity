@@ -45,10 +45,12 @@ export function getParam(param) {
 // This part is an anctivity week 2
 // export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false,) {
   export function renderListWithTemplate(templateFn, parentElement, list, position, clear = false,) {
-  const htmlStrings = list.map(templateFn);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
     parentElement.innerHTML = "";
+  } 
+  if (list.length === 0) {
+    parentElement.insertAdjacentHTML(position, templateFn());
   } else {
     position = "afterbegin";
     const htmlStrings = list.map(templateFn);
@@ -72,8 +74,8 @@ export async function loadTemplate(path) {
 
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("../partials/header.html");
-  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const footerTemplate = await loadTemplate("/partials/footer.html");
   const headerElement = document.querySelector("#header");
   const footerElement = document.querySelector("#footer");
   renderWithTemplate(headerTemplate, headerElement);
