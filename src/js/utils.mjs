@@ -97,7 +97,7 @@ function searchProducts() {
 }
 
 export function performSearch(term) {
-  console.log("Performing search for:", term);
+  //console.log("Performing search for:", term);
 
   // Create the URL with the search term as a query parameter
   const searchParams = new URLSearchParams();
@@ -105,7 +105,7 @@ export function performSearch(term) {
 
   // Get the current URL without the query string
   const baseUrl = `${window.location.origin}/`;
-  console.log("Base URL:", baseUrl);
+  //console.log("Base URL:", baseUrl);
 
   // Construct the full URL
   const newUrl = `product-listing/index.html?${searchParams.toString()}`;

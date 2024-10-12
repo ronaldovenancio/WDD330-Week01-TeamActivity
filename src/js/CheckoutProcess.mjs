@@ -17,15 +17,15 @@ function formDataToJSON(formElement) {
 function packageItems(items) {
   // convert the list of products from localStorage to the simpler form required for the checkout process. Array.map would be perfect for this.
   const simplifiedItems = items.map((item) => {
-  //console.log(item);
-  return {
-    id: item.Id,
-    price: item.FinalPrice,
-    name: item.Name,
-    quantity: item.Qtd,
+    console.log(item);
+    return {
+      id: item.Id,
+      price: item.FinalPrice,
+      name: item.Name,
+      quantity: item.Qtd,
     };
   });
-return simplifiedItems;
+  return simplifiedItems;
 }
 
 export default class CheckoutProcess {

@@ -75,13 +75,6 @@ export default class ProductListing {
     const breadcrumbsElement = document.querySelector("#breadcrumbs");
     breadcrumbsElement.innerHTML = `<span class="path">${this.category}</span> <span class="arrow">></span><span class="path">(${this.products.length} items)</span>`
   }
-  /*
-  renderList(list) {
-    if (list.length > 4) {
-        list.length = 4
-        renderListWithTemplate(productCardTemplate, this.listElement, list);
-    }
-  }  */
 
 
 // Initialize the product listing and fetch the data
