@@ -1,33 +1,47 @@
 import { loadHeaderFooter } from "./utils.mjs";
+//import ProductList from "./ProductList.mjs";
+import Modal from "./modal.mjs";
 
-import ProductData from "./ProductData.mjs";
-import ProductList from "./ProductList.mjs";
-
+// Load the header and footer
 loadHeaderFooter();
 
-
-
+const title = "🎁 Register Now & Be a Winner! 🎁";
+const message = "Sign up on your first visit and get a chance to get a win premium camping gear – tents, sleeping bags, and more! 🏕️";
+const modal = new Modal(title, message, true);
+modal.ShowModal();
 
 /*
-import ProductData from "./ProductDetails.mjs";
-import ProductListing from "./ProductList.mjs";
+import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
 // Create an instance of ProductData
-const productDataInstance = new ProductData();
+const productData = new ProductData("tents");
 
+// Define the list element
+const listElement = document.querySelector(".product-list");
 
-
-// estruturando ProductListing
-
-// Select the HTML element where the product list will be rendered
-const listElement = document.getElementById("product-list");
-
-// Specify the URL for your product data (JSON format)
-const productDataUrl = "path/to/your/product-data.json"; // Adjust as necessary
-
-// Create an instance of ProductListing for a specific category (e.g., 'electronics')
-const productListing = new ProductListing("your-categor", productDataUrl, listElement);
-
-// Initialize the product listing to fetch and display products
+// Create an instance of ProductList
+const productListing = new ProductList("tents", productData, listElement);
 productListing.init();
+
+loadHeaderFooter();
+*/
+
+/*
+import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+// Create an instance of ProductData
+const productData = new ProductData("tents");
+
+// Define the list element
+const listElement = document.querySelector(".product-list");
+
+// Create an instance of ProductList
+const productListing = new ProductList("tents", productData, listElement);
+productListing.init();
+
+loadHeaderFooter();
 */
