@@ -1,6 +1,6 @@
 import { loadHeaderFooter } from "./utils.mjs";
 //import ProductList from "./ProductList.mjs";
-import Modal from "./modal.mjs";
+import { Modal } from "./modal.mjs";
 
 // Load the header and footer
 loadHeaderFooter();
