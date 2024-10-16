@@ -3,14 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Home mx</title>
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/main.js" type="module"></script>
-    <script src="/js/product-listings.js" type="module"></script>
+    <!-- Reference the main.js file -->
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/newsletter.js"></script>
   </head>
   <body>
-    <header class="divider" id="main-header">      
-    </header>
+    <header class="divider" id="header"></header>
     <main class="divider">
       <div class="hero">
         <img
@@ -32,40 +34,55 @@
           comfortably at an affordable price.
         </p>
       </section>
-      <section>
-        <div class="grid-container">
-          <div class="grid-item">
+      <section class="products">
+        <div id="product-listing" class="pl-grid-container">
+          <div class="pl-grid-item">
             <a href="/product-listing/index.html?category=tents">
-              <img src="/public/images/categories/noun_Tent_3544767.svg" alt="Tent Icon from Noun Project: Mustofa Bayu" />
+              <img
+                src="/images/noun_Tent_3544767.svg"
+                alt="Tent Icon from Noun Project: Mustofa Bayu"
+              />
+              Tents
             </a>
-            <h2>Tents</h2>
           </div>
-          <div class="grid-item">
+          <div class="pl-grid-item">
             <a href="/product-listing/index.html?category=backpacks">
-              <img src="/public/images/categories/noun_carrier bag_3544771.svg" alt="Backpack Icon from Noun Project: Mustofa Bayu" />
+              <img
+                src="/images/noun_carrier bag_3544771.svg"
+                alt="Backpack Icon from Noun Project: Mustofa Bayu"
+              />
+              Backpacks
             </a>
-            <h2>Backpacks</h2>
           </div>
-          <div class="grid-item">
+          <div class="pl-grid-item">
             <a href="/product-listing/index.html?category=sleeping-bags">
-              <img src="/public/images/categories/noun_Sleeping Bag_3544775.svg" alt="Hammock Icon from Noun Project: Paul Richard" />            
+              <img
+                src="/images/noun_Sleeping Bag_3544775.svg"
+                alt="Sleeping Bag Icon from Noun Project: Mustofa Bayu"
+              />
+              Sleeping Bags
             </a>
-            <h2>Sleeping bags</h2>            
           </div>
-          <div class="grid-item">
+          <div class="pl-grid-item">
             <a href="/product-listing/index.html?category=hammocks">
-              <img src="/public/images/categories/noun_Hammock_791143.svg" alt="Sleeping Bag Icon from Noun Project: Mustofa Bayu" />            
+              <img
+                src="/images/noun_Hammock_791143.svg"
+                alt="Hammock Icon from Noun Project: Paul Richard"
+              />
+              Hammocks
             </a>
-            <h2>Hammocks</h2>
           </div>
         </div>
       </section>
-      <section class="products">
-        <h2>Top Products</h2>
-        <ul class="product-list">
-        </ul>
-      </section>      
+      <!-- index.html -->
+      <div class="newsletter-signup">
+        <h2>Stay up to date with our latest news and promotions!</h2>
+        <form id="newsletter-signup-form">
+          <input type="email" name="email" placeholder="Enter your email address">
+          <button type="submit">Sign up for our newsletter</button>
+        </form>
+      </div>
     </main>
-    <footer id="main-footer"></footer>
+    <footer id="footer"></footer>
   </body>
 </html>
