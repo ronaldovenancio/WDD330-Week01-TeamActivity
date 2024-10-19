@@ -5,10 +5,10 @@ import { Modal } from "./modal.mjs";
 // Load the header and footer
 loadHeaderFooter();
 
-const title = "🎁 Register Now & Be a Winner! 🎁";
-const message = "Sign up on your first visit and get a chance to get a win premium camping gear – tents, sleeping bags, and more! 🏕️";
-const modal = new Modal(title, message, true);
-modal.ShowModal();
+// const title = "🎁 Register Now & Be a Winner! 🎁";
+// const message = "Sign up on your first visit and get a chance to get a win premium camping gear – tents, sleeping bags, and more! 🏕️";
+// const modal = new Modal(title, message, true);
+// modal.ShowModal();
 
 /*
 import ProductData from "./ProductData.mjs";

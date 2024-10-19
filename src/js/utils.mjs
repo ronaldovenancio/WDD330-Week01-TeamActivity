@@ -72,10 +72,10 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
 
-  searchProducts();
+  // searchProducts();
 
   // Load cartSuperscript
-  cartSuperscript();
+  // cartSuperscript();
 }
 
 function searchProducts() {
